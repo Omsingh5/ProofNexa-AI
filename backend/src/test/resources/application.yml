@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:proofora;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+proofora:
+  jwt:
+    secret: test-secret-test-secret-test-secret-32
+    expiration-ms: 3600000
+  upload-dir: target/test-uploads
+  ai:
+    api-key:
+    base-url: https://api.openai.com/v1
+    model: gpt-4o-mini
+    daily-limit-per-user: 100
+  github:
+    token:
+  auth:
+    login-max-attempts: 100
+    reset-max-attempts: 100
+    expose-reset-token: true
+    reset-token-minutes: 30

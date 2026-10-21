@@ -1,0 +1,12 @@
+package com.proofora.repo;
+
+import com.proofora.domain.GithubProject;
+import com.proofora.domain.SkillEvidence;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SkillEvidenceRepository extends JpaRepository<SkillEvidence, Long> {
+    List<SkillEvidence> findByProject(GithubProject project);
+    void deleteByProject(GithubProject project);
+}

@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: proofora-api
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 10MB
+  datasource:
+    # Local default is a file database so the app starts without Docker or a MySQL account.
+    # Docker Compose sets SPRING_DATASOURCE_URL to MySQL.
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/proofnexa;MODE=MySQL;DB_CLOSE_DELAY=-1}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+proofora:
+  jwt:
+    secret: ${JWT_SECRET:change-me-to-a-long-random-string-at-least-32-chars}
+    expiration-ms: 86400000
+  upload-dir: ${PROOFORA_UPLOAD_DIR:uploads}
+  ai:
+    api-key: ${OPENAI_API_KEY:}
+    base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+    model: ${OPENAI_MODEL:gpt-4o-mini}
+    daily-limit-per-user: 40
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-3.8-flash}
+    base-url: ${GEMINI_BASE_URL:https://generativelanguage.googleapis.com/v1beta}
+  github:
+    token: ${GITHUB_TOKEN:}
+  auth:
+    login-max-attempts: 8
+    login-window-seconds: 900
+    reset-max-attempts: 5
+    expose-reset-token: ${PROOFORA_EXPOSE_RESET_TOKEN:false}
+    reset-token-minutes: 30
+  cors:
+    allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:*,http://127.0.0.1:*}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs

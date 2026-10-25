@@ -84,7 +84,7 @@ public class ProoforaProperties {
     }
 
     public static class Cors {
-        private String allowedOriginPatterns = "http://localhost:*,http://127.0.0.1:*";
+        private String allowedOriginPatterns = "http://localhost:*,http://127.0.0.1:*,https://*.onrender.com";
 
         public String getAllowedOriginPatterns() { return allowedOriginPatterns; }
         public void setAllowedOriginPatterns(String allowedOriginPatterns) { this.allowedOriginPatterns = allowedOriginPatterns; }

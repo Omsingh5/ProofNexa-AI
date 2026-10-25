@@ -54,7 +54,7 @@ proofora:
     expose-reset-token: ${PROOFORA_EXPOSE_RESET_TOKEN:false}
     reset-token-minutes: 30
   cors:
-    allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:*,http://127.0.0.1:*}
+    allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:*,http://127.0.0.1:*,https://*.onrender.com}
 
 springdoc:
   swagger-ui:

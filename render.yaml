@@ -14,3 +14,5 @@ services:
         sync: false
       - key: JAVA_TOOL_OPTIONS
         value: "-Xmx300m"
+      - key: CORS_ALLOWED_ORIGIN_PATTERNS
+        value: "http://localhost:*,http://127.0.0.1:*,https://*.onrender.com"
